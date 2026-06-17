@@ -156,9 +156,6 @@
   </script>
 
   <script type="module">
-    import { db } from "./firebase-config.js";
-    import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
     const brochureForm = document.getElementById('brochureForm');
     const submitBtn = document.getElementById('brochureSubmitBtn');
     const statusEl = document.getElementById('formStatus');
@@ -199,20 +196,7 @@
       submitBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Processing...</span>';
       statusEl.textContent = '';
 
-      const formData = {
-        name: "Brochure Download",
-        phone: phoneVal,
-        email: "N/A",
-        interest: "Brochure Download",
-        visitDate: "Not scheduled",
-        message: "Downloaded Brochure via form",
-        timestamp: serverTimestamp()
-      };
-
       try {
-        // Save lead data into Firebase Contacts collection
-        await addDoc(collection(db, "contacts"), formData);
-        
         // Success transitions
         downloadCard.style.display = 'none';
         successScreen.style.display = 'block';
