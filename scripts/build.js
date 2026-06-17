@@ -16,7 +16,6 @@ fs.mkdirSync(distDir, { recursive: true });
 // Define specific files to include
 const includeFiles = [
   "index.html",
-  "admin.html",
   "amenity-detail.html",
   "privacy-policy.html",
   "terms-of-use.html",
@@ -24,7 +23,6 @@ const includeFiles = [
   "download-brochure.html",
   "styles.css",
   "script.js",
-  "firebase-config.js",
   "sitemap.xml",
   "robots.txt",
   "Vrundavan Brochure.pdf"
