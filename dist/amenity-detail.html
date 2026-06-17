@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Amenity Detail — Vrundavan Luxury Residences</title>
+  <link rel="canonical" href="https://thevrundavan.in/amenity-detail.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .detail-hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .detail-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .detail-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 2;
+    }
+    .detail-hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 24px;
+      max-width: 800px;
+      color: #fff;
+    }
+    .detail-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 16px;
+    }
+    .detail-breadcrumb {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .detail-info {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 60px;
+      align-items: start;
+    }
+    .detail-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray-600);
+    }
+    .detail-desc p {
+      margin-bottom: 24px;
+    }
+    .detail-sidebar {
+      background: var(--gray-50);
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    .amenity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .amenity-item-link {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      transition: all 0.3s;
+      display: block;
+    }
+    .amenity-item-link:hover, .amenity-item-link.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateX(5px);
+    }
+    .back-btn {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--black);
+      transition: color 0.3s;
+    }
+    .back-btn:hover {
+      color: var(--gold);
+    }
+    .back-btns-group {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      border-top: 1px solid var(--gray-200);
+      padding-top: 30px;
+    }
+    .back-btn-alt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--gray-600);
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .back-btn-alt:hover {
+      color: var(--gold);
+      transform: translateX(-5px);
+    }
+    @media (max-width: 900px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (Simplified) -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Vrundavan" class="nav-logo-img"/>
+      </a>
+      <a href="index.html" class="btn btn-outline" style="color: var(--black); border-color: var(--black);">Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-hero">
+      <img src="" alt="" id="heroImg" style="display:none;"/>
+      <video autoplay muted loop playsinline id="heroVideo" style="display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;"></video>
+      <div class="detail-hero-overlay"></div>
+      <div class="detail-hero-content">
+        <span class="detail-breadcrumb">Amenity Detail</span>
+        <h1 class="detail-title" id="mainTitle">Amenity Name</h1>
+      </div>
+    </section>
+
+    <section class="detail-info">
+      <div class="container">
+        <div class="detail-grid">
+          <div class="detail-main">
+            <div class="detail-desc" id="longDesc">
+              <!-- Content loaded via JS -->
+            </div>
+            <div class="back-btns-group">
+              <a href="index.html#amenities" class="back-btn-alt">
+                <i class="fas fa-arrow-left"></i> 
+                <span>Back to All Amenities</span>
+              </a>
+              <a href="index.html" class="back-btn-alt">
+                <i class="fas fa-home"></i> 
+                <span>Back to Home Page</span>
+              </a>
+            </div>
+          </div>
+          <aside class="detail-sidebar">
+            <h3 class="sidebar-title">Explore Amenities</h3>
+            <div class="amenity-list" id="sidebarList">
+              <!-- Links loaded via JS -->
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.jpeg" alt="Vrundavan" class="footer-logo-img"/>
+          <p>Vrundavan Luxury Residences — 1 BHK &amp; Premium 2 BHK homes in Pethali, Taloja One, Navi Mumbai 410208. A community built on quality, care, and the finest lifestyle.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61573233103976&sfnsn=wa" class="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences.%20Please%20provide%20more%20details%20regarding%20the%20project." class="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/arconstruction_kharghar/" class="instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@arconstructionsofficial" class="youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#amenities">Amenities</a></li>
+            <li><a href="index.html#commercial">Commercial</a></li>
+            <li><a href="index.html#floorplans">Floor Plans</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#contact">Schedule Visit</a></li>
+            <li><a href="download-brochure.html">Download Brochure</a></li>
+            <li><a href="index.html#floorplans">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <p>📍 <a href="https://www.google.com/maps/search/?api=1&query=Vrundavan+by+AR+Construction+Taloja+Navi+Mumbai" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Plot No. 1, Sector-6, Pethali, Taloja One, Navi Mumbai 410208</a></p>
+          <p>📞 <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20visiting%20your%20website%20and%20would%20like%20to%20enquire%20about%20Vrundavan%20Luxury%20Residences." target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p>
+          <p style="margin-top:10px;font-size:.78rem;color:rgba(255,255,255,.3);">RERA: P52000023802</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Vrundavan Luxury Residences. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const amenitiesData = {
+      'swimming-pool': {
+        title: 'Swimming Pool',
+        img: 'amenity_pool.png',
+        video: 'swimming_pool_202605142108.mp4',
+        desc: '<p>Dive into luxury at our stunning swimming pool. Designed to provide a serene escape from the bustling city, the pool offers crystal-clear water and a breathtaking view of the Pethali, Taloja One, Navi Mumbai 410208 skyline.</p><p>The pool area includes a separate kids\' pool for the little ones and a spacious poolside deck with premium lounge chairs, perfect for relaxing after a swim or soaking up the sun.</p>'
+      },
+      'gym': {
+        title: 'AC Gymnasium',
+        img: 'amenity_gym.png',
+        video: 'gym_202605142122.mp4',
+        desc: '<p>Our state-of-the-art air-conditioned gymnasium is equipped with the latest fitness technology. From high-end cardio machines to a comprehensive range of free weights, we provide everything you need for a complete workout.</p><p>The gym features large glass windows that offer inspiring views, creating a motivating environment for your fitness journey. Whether you are a fitness enthusiast or just starting out, our gym is designed to meet all your wellness needs.</p>'
+      },
+      'play-area': {
+        title: 'Children\'s Play Area',
+        img: 'amenity_play_area.png',
+        video: 'children\'s_play_area_202605142121.mp4',
+        desc: '<p>A vibrant and safe space for our youngest residents to play and grow. Located on the secure rooftop terrace, the play area features modern equipment including slides, swings, and climbing frames.</p><p>The entire area is fitted with a soft-landing rubber floor to ensure maximum safety. Surrounded by greenery and secure fencing, it\'s the perfect spot for kids to have fun while parents relax nearby with a panoramic view.</p>'
+      },
+      'terrace-garden': {
+        title: 'Terrace Garden',
+        img: 'amenity_garden.png',
+        video: 'Terrace_Garden_202605142122.mp4',
+        desc: '<p>Experience peace and tranquility in our lush landscaped rooftop terrace garden. Winding stone paths, comfortable outdoor seating, and a variety of tropical plants create a beautiful urban retreat.</p><p>It\'s an ideal space for a morning stroll, an evening conversation with neighbors, or simply enjoying a quiet moment amidst nature, high above the city on the rooftop level.</p>'
+      },
+      'grand-lobby': {
+        title: 'Grand Entrance Lobby',
+        img: 'amenity_lobby.png',
+        video: 'Entrance_lobby_of_building_202605142138.mp4',
+        desc: '<p>First impressions last, and our grand entrance lobby is designed to impress. With double-height ceilings, premium marble flooring, and elegant designer lighting, it reflects the luxury that awaits within the tower.</p><p>A professional reception desk and comfortable plush seating areas provide a welcoming atmosphere for residents and guests alike.</p>'
+      },
+      'indoor-games': {
+        title: 'Indoor Games Room',
+        img: 'amenity_games.png',
+        video: 'Indoor_game_building_for_kids_202605142141.mp4',
+        desc: '<p>Our rooftop indoor games room is the social hub of the community. Equipped with a foosball table, table tennis, and various board games, it offers endless entertainment for all ages with a stunning view of the skyline.</p><p>The room is designed with modern decor and comfortable lounge seating, making it a great place to unwind and interact with fellow residents high above the bustle of the city.</p>'
+      },
+      'yoga-deck': {
+        title: 'Yoga & Meditation Deck',
+        img: 'amenity_yoga.png',
+        video: 'Yoga_&_Meditation_Deck_202605142129.mp4',
+        desc: '<p>Find your inner balance at our peaceful yoga and meditation deck. Located on the rooftop terrace with wooden flooring and zen-inspired landscaping, it provides a serene setting for your daily wellness routine.</p><p>Enjoy the calming atmosphere and beautiful sunrise views as you practice yoga or meditate in this dedicated space for mindfulness.</p>'
+      },
+      'jogging-track': {
+        title: 'Jogging Track',
+        img: 'amenity_jogging.png',
+        video: 'Jogging_Track_on_building_rooftop_202605142133.mp4',
+        desc: '<p>Maintain an active lifestyle on our scenic rooftop jogging track. Encircling the rooftop terrace and surrounded by sky gardens and blooming flowers, it offers a refreshing environment for your morning or evening runs.</p><p>The track is designed with a comfortable surface and includes benches along the way for quick breaks, ensuring a healthy and enjoyable experience for all residents while they take in the city views.</p>'
+      },
+      'security': {
+        title: '24/7 Security',
+        img: 'amenity_security.png',
+        video: 'security.mp4',
+        desc: '<p>Your safety is our top priority. Vrundavan is secured with a comprehensive 24/7 security system, including high-definition CCTV surveillance across all common areas, professional security personnel, and intercom facilities in every apartment.</p><p>The gated community also features boom barriers at entry points and smart visitor management systems to ensure a secure and peaceful living environment for all families.</p>'
+      }
+    };
+
+    function loadDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get('type') || 'swimming-pool';
+      const data = amenitiesData[type] || amenitiesData['swimming-pool'];
+
+      const heroImg = document.getElementById('heroImg');
+      const heroVideo = document.getElementById('heroVideo');
+
+      if (data.video) {
+        heroVideo.src = data.video;
+        heroVideo.style.display = 'block';
+        heroImg.style.display = 'none';
+      } else {
+        heroImg.src = data.img;
+        heroImg.style.display = 'block';
+        heroVideo.style.display = 'none';
+      }
+
+      document.getElementById('mainTitle').textContent = data.title;
+      document.getElementById('longDesc').innerHTML = data.desc;
+      document.title = `${data.title} — Vrundavan Luxury Residences`;
+
+      const listContainer = document.getElementById('sidebarList');
+      for (const [key, value] of Object.entries(amenitiesData)) {
+        const link = document.createElement('a');
+        link.href = `?type=${key}`;
+        link.className = `amenity-item-link ${key === type ? 'active' : ''}`;
+        link.textContent = value.title;
+        listContainer.appendChild(link);
+      }
+    }
+
+    window.onload = loadDetail;
+  </script>
+
+  <!-- FLOATING WHATSAPP WIDGET -->
+  <div class="wa-float" id="waFloat">
+    <div class="wa-popup">
+      <div class="wa-popup-header">Chat with Us</div>
+      <div class="wa-popup-phone">📞 +91 99207 39555</div>
+      <div class="wa-popup-text">Have any questions? Talk to our sales executive instantly on WhatsApp.</div>
+      <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences%20and%20came%20from%20Vrundavan%20website." class="wa-popup-cta" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat Now</a>
+    </div>
+    <div class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+  </div>
+
+</body>
+</html>

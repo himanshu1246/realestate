@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "generate-config": "node scripts/generate-firebase-config.js",
+    "build": "npm run generate-config && node scripts/build.js",
+    "dev": "live-server --port=8080 --entry-file=index.html --ignorePattern=\"(node_modules|.git|dist|\\.mp4|\\.pdf)\"",
+    "deploy": "node scripts/deploy.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

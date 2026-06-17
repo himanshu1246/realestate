@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Download Brochure — Vrundavan Luxury Residences</title>
+  <link rel="canonical" href="https://thevrundavan.in/download-brochure.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <img src="logo.jpeg" alt="Vrundavan Logo"/>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Vrundavan" class="nav-logo-img"/>
+      </a>
+      <a href="index.html" class="btn btn-outline" style="color: var(--black); border-color: var(--black);">Back to Home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="brochure-container">
+      
+      <!-- FORM SCREEN -->
+      <div class="brochure-card" id="downloadCard">
+        <a href="index.html" style="display:inline-block; margin-bottom:20px; color:var(--gold); font-weight:600; font-size:0.9rem;">← Back to Home</a>
+        <h1>Download Brochure</h1>
+        <p>Please enter your phone number to download the exclusive brochure for Vrundavan Luxury Residences.</p>
+        
+        <form class="brochure-form" id="brochureForm">
+          <div class="form-group">
+            <label for="brochurePhone">Enter Phone Number</label>
+            <div class="phone-input-wrap">
+              <span class="phone-input-icon"><i class="fas fa-phone-alt"></i></span>
+              <input type="tel" id="brochurePhone" placeholder="Enter 10-digit Mobile Number" required pattern="[0-9]{10}" maxlength="10" autocomplete="tel"/>
+            </div>
+          </div>
+          <button type="submit" class="brochure-submit-btn" id="brochureSubmitBtn">
+            <span>📥 Download Brochure</span>
+          </button>
+          <div class="form-status" id="formStatus" style="text-align: center; margin-top: 10px;"></div>
+        </form>
+      </div>
+
+      <!-- SUCCESS SCREEN -->
+      <div class="brochure-card success-screen" id="successScreen">
+        <div class="success-icon">
+          <i class="fas fa-check"></i>
+        </div>
+        <h2>Download Started!</h2>
+        <p>Your brochure download has started automatically. If it didn't start, please click the link below to download manually:</p>
+        <p>
+          <a class="manual-download-btn" id="manualDownloadLink">📄 Click here to download brochure</a>
+        </p>
+        <div class="redirect-timer" id="redirectTimer">
+          Redirecting to Home Page in 6 seconds...
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.jpeg" alt="Vrundavan" class="footer-logo-img"/>
+          <p>Vrundavan Luxury Residences — 1 BHK &amp; Premium 2 BHK homes in Pethali, Taloja One, Navi Mumbai 410208. A community built on quality, care, and the finest lifestyle.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61573233103976&sfnsn=wa" class="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences.%20Please%20provide%20more%20details%20regarding%20the%20project." class="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/arconstruction_kharghar/" class="instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@arconstructionsofficial" class="youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#amenities">Amenities</a></li>
+            <li><a href="index.html#commercial">Commercial</a></li>
+            <li><a href="index.html#floorplans">Floor Plans</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#contact">Schedule Visit</a></li>
+            <li><a href="download-brochure.html">Download Brochure</a></li>
+            <li><a href="index.html#floorplans">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <p>📍 <a href="https://www.google.com/maps/search/?api=1&query=Vrundavan+by+AR+Construction+Taloja+Navi+Mumbai" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Plot No. 1, Sector-6, Pethali, Taloja One, Navi Mumbai 410208</a></p>
+          <p>📞 <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20visiting%20your%20website%20and%20would%20like%20to%20enquire%20about%20Vrundavan%20Luxury%20Residences." target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p>
+          <p style="margin-top:10px;font-size:.78rem;color:rgba(255,255,255,.3);">RERA: P52000023802</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Vrundavan Luxury Residences. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP WIDGET -->
+  <div class="wa-float" id="waFloat">
+    <div class="wa-popup">
+      <div class="wa-popup-header">Chat with Us</div>
+      <div class="wa-popup-phone">📞 +91 99207 39555</div>
+      <div class="wa-popup-text">Have any questions? Talk to our sales executive instantly on WhatsApp.</div>
+      <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences%20and%20came%20from%20Vrundavan%20website." class="wa-popup-cta" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat Now</a>
+    </div>
+    <div class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // PRELOADER
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 500);
+    });
+
+    // Mobile input validation helper
+    const phoneInput = document.getElementById('brochurePhone');
+    phoneInput.addEventListener('input', (e) => {
+      // Remove any non-numeric characters
+      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    });
+  </script>
+
+  <script type="module">
+    import { db } from "./firebase-config.js";
+    import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const brochureForm = document.getElementById('brochureForm');
+    const submitBtn = document.getElementById('brochureSubmitBtn');
+    const statusEl = document.getElementById('formStatus');
+    const downloadCard = document.getElementById('downloadCard');
+    const successScreen = document.getElementById('successScreen');
+    const manualDownloadLink = document.getElementById('manualDownloadLink');
+    const redirectTimer = document.getElementById('redirectTimer');
+
+    // Trigger brochure download helper function
+    function triggerDownload() {
+      const link = document.createElement('a');
+      link.href = 'Vrundavan Brochure.pdf';
+      link.download = 'Vrundavan_Brochure.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Set up manual download click fallback
+    manualDownloadLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      triggerDownload();
+    });
+
+    brochureForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const phoneVal = phoneInput.value.trim();
+      
+      // Strict 10 digit check
+      if (phoneVal.length !== 10) {
+        statusEl.textContent = '❌ Please enter a valid 10-digit mobile number.';
+        statusEl.style.color = '#dc2626';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Processing...</span>';
+      statusEl.textContent = '';
+
+      const formData = {
+        name: "Brochure Download",
+        phone: phoneVal,
+        email: "N/A",
+        interest: "Brochure Download",
+        visitDate: "Not scheduled",
+        message: "Downloaded Brochure via form",
+        timestamp: serverTimestamp()
+      };
+
+      try {
+        // Save lead data into Firebase Contacts collection
+        await addDoc(collection(db, "contacts"), formData);
+        
+        // Success transitions
+        downloadCard.style.display = 'none';
+        successScreen.style.display = 'block';
+
+        // Trigger PDF download automatically
+        triggerDownload();
+
+        // Redirect countdown back to index.html
+        let countdown = 6;
+        const timerInterval = setInterval(() => {
+          countdown--;
+          redirectTimer.textContent = `Redirecting to Home Page in ${countdown} seconds...`;
+          if (countdown <= 0) {
+            clearInterval(timerInterval);
+            window.location.href = 'index.html';
+          }
+        }, 1000);
+
+      } catch (err) {
+        console.error("Firebase brochure log failed: ", err);
+        statusEl.textContent = '❌ An error occurred. Please try again.';
+        statusEl.style.color = '#dc2626';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>📥 Download Brochure</span>';
+      }
+    });
+  </script>
+</body>
+</html>

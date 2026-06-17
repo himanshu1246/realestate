@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin Dashboard — Vrundavan Inquiries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #b8860b;
+      --navy: #0a192f;
+      --light: #f8f9fa;
+      --dark: #111;
+      --border: #e0e0e0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--light); color: var(--dark); padding: 40px 20px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    h1 { font-size: 1.8rem; color: var(--navy); }
+    .btn-back { text-decoration: none; color: var(--gold); font-weight: 600; font-size: 0.9rem; }
+    
+    /* AUTH OVERLAY */
+    #authOverlay {
+      position: fixed; inset: 0; background: var(--navy); z-index: 100;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff;
+    }
+    #authOverlay input { 
+      padding: 12px 20px; border-radius: 50px; border: none; margin-top: 20px; 
+      width: 250px; text-align: center; font-size: 1rem; outline: none;
+    }
+    #authOverlay p { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 10px; }
+
+    /* TABLE */
+    .table-container { 
+      background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+      overflow: hidden; border: 1px solid var(--border);
+    }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { background: #fdfdfd; padding: 16px; font-weight: 600; font-size: 0.85rem; color: #777; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+    td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafafa; }
+
+    .interest-tag { 
+      display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+      background: #f0f0f0; color: #555;
+    }
+    .date { font-size: 0.8rem; color: #999; }
+    .no-data { padding: 40px; text-align: center; color: #999; }
+    
+    @media (max-width: 768px) {
+      td, th { padding: 12px; font-size: 0.85rem; }
+      .message-cell { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIMPLE PROTECTION -->
+  <div id="authOverlay">
+    <img src="logo.jpeg" alt="Logo" style="height:60px; margin-bottom: 20px;"/>
+    <h2>Admin Access</h2>
+    <input type="password" id="adminPass" placeholder="Enter Password"/>
+    <p>Password is "vrundavan2026"</p>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Recent Inquiries</h1>
+      <a href="index.html" class="btn-back">← Back to Website</a>
+    </header>
+
+    <div class="table-container">
+      <table id="inquiryTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Contact Details</th>
+            <th>Interest</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="inquiryBody">
+          <!-- Rows will be injected here -->
+        </tbody>
+      </table>
+      <div id="loader" class="no-data">Loading inquiries...</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from "./firebase-config.js";
+    import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const passInput = document.getElementById('adminPass');
+    const overlay = document.getElementById('authOverlay');
+    const body = document.getElementById('inquiryBody');
+    const loader = document.getElementById('loader');
+
+    // Simple Password Check
+    passInput.addEventListener('input', () => {
+      if (passInput.value === 'vrundavan2026') {
+        overlay.style.display = 'none';
+        fetchInquiries();
+      }
+    });
+
+    async function fetchInquiries() {
+      try {
+        const q = query(collection(db, "contacts"), orderBy("timestamp", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        loader.style.display = 'none';
+        body.innerHTML = '';
+
+        if (querySnapshot.empty) {
+          body.innerHTML = '<tr><td colspan="5" class="no-data">No inquiries found yet.</td></tr>';
+          return;
+        }
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const date = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString() : 'N/A';
+          
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="date">${date}</td>
+            <td><strong>${data.name}</strong></td>
+            <td>
+              <div style="font-size:0.9rem;">📞 ${data.phone}</div>
+              <div style="font-size:0.8rem; color:#777;">✉️ ${data.email || 'N/A'}</div>
+            </td>
+            <td><span class="interest-tag">${data.interest || 'General'}</span></td>
+            <td class="message-cell">${data.message || '-'}</td>
+          `;
+          body.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Error fetching inquiries:", error);
+        loader.textContent = "Error loading data. Check console.";
+      }
+    }
+  </script>
+</body>
+</html>

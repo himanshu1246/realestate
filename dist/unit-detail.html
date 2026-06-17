@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Unit Detail — Vrundavan Luxury Residences</title>
+  <link rel="canonical" href="https://thevrundavan.in/unit-detail.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .detail-hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      min-height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .detail-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .detail-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: 2;
+    }
+    .detail-hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 24px;
+      max-width: 800px;
+      color: #fff;
+    }
+    .detail-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 16px;
+    }
+    .detail-breadcrumb {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .detail-info {
+      padding: 80px 0;
+      background: #fff;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 60px;
+      align-items: start;
+    }
+    .detail-desc {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray-600);
+    }
+    .detail-desc p {
+      margin-bottom: 24px;
+    }
+    .detail-sidebar {
+      background: var(--gray-50);
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+    .unit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .unit-item-link {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      transition: all 0.3s;
+      display: block;
+    }
+    .unit-item-link:hover, .unit-item-link.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateX(5px);
+    }
+    .back-btn {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--black);
+      transition: color 0.3s;
+    }
+    .back-btn:hover {
+      color: var(--gold);
+    }
+    .back-btns-group {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      border-top: 1px solid var(--gray-200);
+      padding-top: 30px;
+    }
+    .back-btn-alt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--gray-600);
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .back-btn-alt:hover {
+      color: var(--gold);
+      transform: translateX(-5px);
+    }
+    .feature-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 900px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (Simplified) -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.jpeg" alt="Vrundavan" class="nav-logo-img"/>
+      </a>
+      <a href="index.html" class="btn btn-outline" style="color: var(--black); border-color: var(--black);">Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-hero">
+      <img src="" alt="" id="heroImg"/>
+      <div class="detail-hero-overlay"></div>
+      <div class="detail-hero-content">
+        <span class="detail-breadcrumb">Unit Detail</span>
+        <h1 class="detail-title" id="mainTitle">Unit Name</h1>
+      </div>
+    </section>
+
+    <section class="detail-info">
+      <div class="container">
+        <div class="detail-grid">
+          <div class="detail-main">
+            <div class="detail-desc" id="longDesc">
+              <!-- Content loaded via JS -->
+            </div>
+            <div class="back-btns-group">
+              <a href="index.html" class="back-btn-alt" id="backToCategory">
+                <i class="fas fa-arrow-left"></i> 
+                <span id="backCategoryText">Back to Detail</span>
+              </a>
+              <a href="index.html" class="back-btn-alt" id="backToHomeMain">
+                <i class="fas fa-home"></i> 
+                <span>Back to Home Page</span>
+              </a>
+            </div>
+          </div>
+          <aside class="detail-sidebar">
+            <h3 class="sidebar-title">Explore Units</h3>
+            <div class="unit-list" id="sidebarList">
+              <!-- Links loaded via JS -->
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.jpeg" alt="Vrundavan" class="footer-logo-img"/>
+          <p>Vrundavan Luxury Residences — 1 BHK &amp; Premium 2 BHK homes in Pethali, Taloja One, Navi Mumbai 410208. A community built on quality, care, and the finest lifestyle.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61573233103976&sfnsn=wa" class="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences.%20Please%20provide%20more%20details%20regarding%20the%20project." class="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/arconstruction_kharghar/" class="instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@arconstructionsofficial" class="youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#amenities">Amenities</a></li>
+            <li><a href="index.html#commercial">Commercial</a></li>
+            <li><a href="index.html#floorplans">Floor Plans</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#contact">Schedule Visit</a></li>
+            <li><a href="download-brochure.html">Download Brochure</a></li>
+            <li><a href="index.html#floorplans">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <p>📍 <a href="https://www.google.com/maps/search/?api=1&query=Vrundavan+by+AR+Construction+Taloja+Navi+Mumbai" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Plot No. 1, Sector-6, Pethali, Taloja One, Navi Mumbai 410208</a></p>
+          <p>📞 <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20visiting%20your%20website%20and%20would%20like%20to%20enquire%20about%20Vrundavan%20Luxury%20Residences." target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p>
+          <p style="margin-top:10px;font-size:.78rem;color:rgba(255,255,255,.3);">RERA: P52000023802</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Vrundavan Luxury Residences. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const unitsData = {
+      'ground-shops': {
+        title: 'Ground Floor Premium Shops',
+        img: 'unit_shop_ground.png',
+        desc: `
+          <div class="feature-tag">a corner plot on a 20 by 20-meter-wide road</div>
+          <div class="feature-tag">25+ Street-Facing Units</div>
+          <div class="feature-tag">High Footfall Area</div>
+          <p>Our ground-floor commercial spaces are strategically designed for high-visibility retail. Located directly on <strong>a corner plot on a 20 by 20-meter-wide road</strong>, these shops offer immense footfall and accessibility, making them ideal for showrooms, boutiques, cafes, or utility stores.</p>
+          <p>The units feature large street-facing glass fronts and are designed with modern urban aesthetics to enhance your brand's presence. With dedicated stilt parking frontage, customers have easy access to your business.</p>
+        `
+      },
+      'first-office': {
+        title: 'First Floor Corporate Offices',
+        img: 'unit_office_first.png',
+        desc: `
+          <div class="feature-tag">Separate Entrance &amp; Private Lift</div>
+          <div class="feature-tag">Gym &amp; Office Friendly</div>
+          <div class="feature-tag">Service Elevators</div>
+          <p>The first floor of Vrundavan is dedicated to professional and corporate excellence, featuring a <strong>separate entrance and a private lift</strong> for exclusive access. This makes it a perfect choice for <strong>Gyms, Wellness Centers, Corporate Offices, or Medical Clinics</strong>.</p>
+          <p>The layout includes wide corridors and premium common areas, serviced by high-speed elevators. The large windows provide ample natural light and a view of the 20 by 20-meter-wide road, ensuring a pleasant and professional environment.</p>
+        `
+      },
+      '1bhk': {
+        title: '1 BHK Residence',
+        img: 'unit_1bhk.png',
+        desc: `
+          <div class="feature-tag">Wing A: 4 Units | Wing B: 6 Units</div>
+          <div class="feature-tag">3 Lifts per Wing</div>
+          <p>Our 1 BHK residences are crafted for modern individuals and small families who value comfort and style. The project features two distinct wings (A &amp; B) to ensure better privacy and management.</p>
+          <p>The <strong>1 BHK units are distributed across both wings</strong>, with 4 units per floor in Wing A and 6 units per floor in Wing B, totaling 10 units per floor. Each wing is serviced by <strong>3 dedicated high-speed lifts</strong>, ensuring minimal wait times and smooth vertical transit.</p>
+        `
+      },
+      '2bhk': {
+        title: 'Premium 2 BHK with Terrace',
+        img: 'unit_2bhk.png',
+        desc: `
+          <div class="feature-tag">Wing A Exclusive</div>
+          <div class="feature-tag">Sunset View Terrace</div>
+          <div class="feature-tag">Only 2 Units per Floor</div>
+          <p>Experience the ultimate in luxury living with our <strong>Premium 2 BHK Comfort Homes with Terrace</strong>, situated exclusively in <strong>Wing A</strong>. These elite units are limited to just <strong>2 flats per floor</strong>, offering unparalleled privacy and space.</p>
+          <p>Each unit features a magnificent <strong>private terrace designed to capture stunning sunset views</strong>, perfect for evening relaxation. Wing A is equipped with <strong>3 dedicated high-speed lifts</strong> for the exclusive use of its residents.</p>
+        `
+      }
+    };
+
+    function loadDetail() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get('type') || '1bhk';
+      const data = unitsData[type] || unitsData['1bhk'];
+
+      document.getElementById('heroImg').src = data.img;
+      document.getElementById('mainTitle').textContent = data.title;
+      document.getElementById('longDesc').innerHTML = data.desc;
+      document.title = `${data.title} — Vrundavan Luxury Residences`;
+
+      // Update Back Buttons
+      const backCategory = document.getElementById('backToCategory');
+      const backCategoryText = document.getElementById('backCategoryText');
+      if (type === 'ground-shops' || type === 'first-office') {
+        backCategory.href = 'index.html#commercial';
+        backCategoryText.textContent = 'Back to Shop Detail';
+      } else {
+        backCategory.href = 'index.html#floorplans';
+        backCategoryText.textContent = 'Back to Flat Detail';
+      }
+
+      const listContainer = document.getElementById('sidebarList');
+      for (const [key, value] of Object.entries(unitsData)) {
+        const link = document.createElement('a');
+        link.href = `?type=${key}`;
+        link.className = `unit-item-link ${key === type ? 'active' : ''}`;
+        link.textContent = value.title;
+        listContainer.appendChild(link);
+      }
+    }
+
+    window.onload = loadDetail;
+  </script>
+
+  <!-- FLOATING WHATSAPP WIDGET -->
+  <div class="wa-float" id="waFloat">
+    <div class="wa-popup">
+      <div class="wa-popup-header">Chat with Us</div>
+      <div class="wa-popup-phone">📞 +91 99207 39555</div>
+      <div class="wa-popup-text">Have any questions? Talk to our sales executive instantly on WhatsApp.</div>
+      <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences%20and%20came%20from%20Vrundavan%20website." class="wa-popup-cta" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat Now</a>
+    </div>
+    <div class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+  </div>
+
+</body>
+</html>

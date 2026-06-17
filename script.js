@@ -265,10 +265,52 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     timestamp: serverTimestamp()
   };
 
-  if (!formData.name || !formData.phone || !formData.email) {
-    status.textContent = '❌ Please fill in your name, phone, and email.';
+  if (!formData.name || !formData.phone || !formData.interest) {
+    status.textContent = '❌ Please fill in your name, phone, and what you are interested in.';
     status.className = 'form-status error';
     return;
+  }
+
+  // Open the window synchronously to bypass the browser popup blocker
+  const waWindow = window.open('', '_blank');
+  if (waWindow) {
+    waWindow.document.write(`
+      <html>
+        <head>
+          <title>Connecting to WhatsApp...</title>
+          <style>
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+              background-color: #0c1a30;
+              color: #ffffff;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+              margin: 0;
+            }
+            .loader {
+              border: 4px solid rgba(255, 255, 255, 0.1);
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              border-left-color: #25d366;
+              animation: spin 1s linear infinite;
+              margin-bottom: 20px;
+            }
+            @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+            h2 { font-weight: 500; margin: 10px 0; }
+            p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+          </style>
+        </head>
+        <body>
+          <div class="loader"></div>
+          <h2>Connecting to WhatsApp</h2>
+          <p>Please wait while we prepare your chat request...</p>
+        </body>
+      </html>
+    `);
   }
 
   btn.textContent = 'Processing…'; btn.disabled = true;
@@ -278,18 +320,22 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     await addDoc(collection(db, "contacts"), formData);
     
     // 2. WhatsApp Lead Sync
-    const waMsg = `*New Website Lead - Vrundavan*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Interest:* ${formData.interest || 'Not specified'}%0A*Site Visit Date:* ${formData.visitDate}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message || 'No message'}%0A%0A_Sent from Website Lead Sync_`;
+    const waMsg = `*New Website Lead - Vrundavan*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Interest:* ${formData.interest || 'Not specified'}%0A*Site Visit Date:* ${formData.visitDate}%0A*Email:* ${formData.email || 'Not provided'}%0A*Message:* ${formData.message || 'No message'}%0A%0A_Sent from Website Lead Sync_`;
     
     const waUrl = `https://wa.me/919920739555?text=${waMsg}`;
     
-    // Open WhatsApp in new tab
-    window.open(waUrl, '_blank');
+    if (waWindow) {
+      waWindow.location.href = waUrl;
+    } else {
+      window.open(waUrl, '_blank');
+    }
 
     status.textContent = '✔ Enquiry saved & WhatsApp opening...';
     status.className = 'form-status success';
     this.reset();
   } catch (error) {
     console.error("Error adding document: ", error);
+    if (waWindow) waWindow.close();
     status.textContent = '❌ Something went wrong. Please try again.';
     status.className = 'form-status error';
   } finally {

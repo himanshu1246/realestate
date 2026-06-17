@@ -3,12 +3,63 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Vrundavan Luxury Residences — Pethali, Taloja One, Navi Mumbai 410208</title>
+
+  <!-- Browser Tab Title -->
+  <title>The Vrundavan</title>
+
+  <!-- ===== FAVICON — full Google Search compatible set ===== -->
+  <!-- ICO at root: most reliable signal for Google's crawler -->
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <!-- PNG variants for browsers -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"/>
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png"/>
+  <!-- SVG for modern browsers (browser tab only, Google ignores SVG) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <!-- Apple touch icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-192.png"/>
+  <!-- Web App Manifest (Google reads icons from here too) -->
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#0d1b3e"/>
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Vrundavan",
+    "url": "https://thevrundavan.in/"
+  }
+  </script>
+
   <meta name="description" content="Vrundavan Luxury Residences — 1 BHK &amp; Premium 2 BHK apartments in Pethali, Taloja One, Navi Mumbai 410208. World-class amenities, commercial shops, and serene community living. RERA: P52000023802"/>
+  <meta name="robots" content="index, follow"/>
+
+  <!-- Canonical & Open Graph SEO -->
+  <link rel="canonical" href="https://thevrundavan.in/"/>
+  <meta property="og:title" content="Vrundavan Luxury Residences — Pethali, Taloja One, Navi Mumbai"/>
+  <meta property="og:description" content="1 BHK &amp; Premium 2 BHK apartments in Pethali, Taloja One, Navi Mumbai. G+21 Storey Tower with 25+ world-class rooftop amenities. RERA: P52000023802"/>
+  <meta property="og:image" content="https://thevrundavan.in/vrundavan_hero.png"/>
+  <meta property="og:url" content="https://thevrundavan.in/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Vrundavan Luxury Residences"/>
+  <!-- Twitter Card SEO -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Vrundavan Luxury Residences — Navi Mumbai"/>
+  <meta name="twitter:description" content="1 BHK &amp; Premium 2 BHK luxury homes in Taloja One, Navi Mumbai starting at ₹42 Lakh."/>
+  <meta name="twitter:image" content="https://thevrundavan.in/vrundavan_hero.png"/>
+
+  <!-- ===== CRITICAL RESOURCE PRELOADS (LCP boost) ===== -->
+  <link rel="preload" as="image" href="vrundavan_hero.png" fetchpriority="high"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <!-- Load fonts async to eliminate render-blocking -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
+  <!-- FontAwesome async -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/></noscript>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
@@ -49,10 +100,11 @@
     <!-- HERO (new video + fallback) -->
     <section class="hero" id="home">
       <div class="hero-bg">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Hero image shown first for fast LCP, video replaces it once loaded -->
+        <img src="vrundavan_hero.png" alt="Vrundavan Luxury Residences - Luxury Apartments Navi Mumbai" class="hero-img-fallback" id="heroFallback" width="1920" height="1080" fetchpriority="high"/>
+        <video class="hero-video" autoplay muted loop playsinline preload="none" id="heroVideo" style="opacity:0;">
           <source src="vrundavan vid.mp4" type="video/mp4"/>
         </video>
-        <img src="vrundavan img.jpeg" alt="Vrundavan Luxury Residences" class="hero-img-fallback" style="display:none;" id="heroFallback"/>
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
@@ -61,7 +113,7 @@
         <p class="hero-subtitle reveal">1 BHK &amp; Premium 2 BHK apartments crafted for modern living.<br/>Where comfort, community, and luxury come together.</p>
         <div class="hero-actions reveal">
           <a href="#floorplans" class="btn btn-gold" id="hero-explore-btn">Explore Homes</a>
-          <a href="login.html" class="btn btn-outline" id="hero-brochure-btn">Download Brochure</a>
+          <a href="download-brochure.html" class="btn btn-outline" id="hero-brochure-btn">Download Brochure</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -96,7 +148,7 @@
         <div class="about-grid">
           <div class="about-image-block reveal-left">
             <div class="about-img-wrap">
-              <img src="vrundavan img.jpeg" alt="Vrundavan Luxury Residences"/>
+              <img src="vrundavan img.jpeg" alt="Vrundavan Luxury Residences" loading="lazy" width="600" height="450"/>
               <div class="about-badge">
                 <span class="badge-year">RERA</span>
                 <span class="badge-num" style="font-size:1rem;">Regd.</span>
@@ -130,7 +182,7 @@
               🏛 MahaRERA Reg. Number &nbsp;<strong>P52000023802</strong>
             </div>
             <div style="margin-top:24px;">
-              <a href="login.html" class="btn btn-gold" id="about-brochure-btn">📄 Download Brochure</a>
+              <a href="download-brochure.html" class="btn btn-gold" id="about-brochure-btn">📄 Download Brochure</a>
             </div>
           </div>
         </div>
@@ -146,8 +198,9 @@
           <p class="section-subtitle">A curated collection of premium amenities designed for your well-being and leisure.</p>
         </div>
         <div class="amenities-grid">
+          <!-- Videos lazy-loaded via JS IntersectionObserver (see script at bottom) -->
           <a href="amenity-detail.html?type=swimming-pool" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="swimming_pool_202605142108.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="swimming_pool_202605142108.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🏊</div>
@@ -156,7 +209,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=gym" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="gym_202605142122.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="gym_202605142122.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">💪</div>
@@ -165,7 +218,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=play-area" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="children's_play_area_202605142121.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="children's_play_area_202605142121.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">👶</div>
@@ -174,7 +227,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=terrace-garden" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="Terrace_Garden_202605142122.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="Terrace_Garden_202605142122.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🌳</div>
@@ -183,7 +236,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=grand-lobby" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="Entrance_lobby_of_building_202605142138.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="Entrance_lobby_of_building_202605142138.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🏛️</div>
@@ -192,7 +245,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=indoor-games" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="Indoor_game_building_for_kids_202605142141.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="Indoor_game_building_for_kids_202605142141.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🎾</div>
@@ -201,7 +254,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=yoga-deck" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="Yoga_&_Meditation_Deck_202605142129.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="Yoga_&amp;_Meditation_Deck_202605142129.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🧘</div>
@@ -210,7 +263,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=jogging-track" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="Jogging_Track_on_building_rooftop_202605142133.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="Jogging_Track_on_building_rooftop_202605142133.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🏃</div>
@@ -219,7 +272,7 @@
             </div>
           </a>
           <a href="amenity-detail.html?type=security" class="amenity-card reveal">
-            <video autoplay muted loop playsinline class="amenity-bg-video"><source src="security.mp4" type="video/mp4"/></video>
+            <video muted loop playsinline class="amenity-bg-video lazy-video" data-src="security.mp4"></video>
             <div class="amenity-overlay"></div>
             <div class="amenity-card-content">
               <div class="amenity-icon">🔒</div>
@@ -266,7 +319,7 @@
             <h3>Interested in a Shop or Office?</h3>
             <p>Download the detailed commercial unit layouts, areas and pricing schedules.</p>
           </div>
-          <a href="login.html" class="btn btn-gold" id="commercial-brochure-btn">📥 Download Brochure</a>
+          <a href="download-brochure.html" class="btn btn-gold" id="commercial-brochure-btn">📥 Download Brochure</a>
         </div>
       </div>
     </section>
@@ -321,7 +374,7 @@
             <h3>Get the Full Brochure</h3>
             <p>Detailed floor plans, pricing sheet &amp; site map in one document.</p>
           </div>
-          <a href="login.html" class="btn btn-gold" id="floorplan-brochure-btn">📥 Download Brochure</a>
+          <a href="download-brochure.html" class="btn btn-gold" id="floorplan-brochure-btn">📥 Download Brochure</a>
         </div>
       </div>
     </section>
@@ -384,7 +437,7 @@
         <div class="gallery-masonry">
           <!-- Portrait Item -->
           <div class="gallery-item reveal">
-            <img src="real_building_tall.png" alt="Vrundavan Tower Elevation"/>
+            <img src="real_building_tall.png" alt="Vrundavan Tower Elevation" loading="lazy" width="600" height="900"/>
             <div class="gallery-overlay">
               <span>Tower Architecture</span>
               <p>G+21 Floors Elevation</p>
@@ -392,7 +445,7 @@
           </div>
           <!-- Landscape Item -->
           <div class="gallery-item reveal">
-            <img src="vrundavan img.jpeg" alt="Vrundavan Exterior Render"/>
+            <img src="vrundavan img.jpeg" alt="Vrundavan Exterior Render" loading="lazy" width="800" height="600"/>
             <div class="gallery-overlay">
               <span>Sunset Perspective</span>
               <p>Exterior Entrance View</p>
@@ -400,7 +453,7 @@
           </div>
           <!-- Landscape Item -->
           <div class="gallery-item reveal">
-            <img src="real_rooftop.png" alt="Rooftop Garden Concept"/>
+            <img src="real_rooftop.png" alt="Rooftop Garden Concept" loading="lazy" width="800" height="600"/>
             <div class="gallery-overlay">
               <span>Lush Rooftop Garden</span>
               <p>Terrace Seating &amp; Sky Walk</p>
@@ -408,7 +461,7 @@
           </div>
           <!-- Landscape Item -->
           <div class="gallery-item reveal">
-            <img src="real_commercial_render.png" alt="Commercial Frontage"/>
+            <img src="real_commercial_render.png" alt="Commercial Frontage" loading="lazy" width="800" height="600"/>
             <div class="gallery-overlay">
               <span>Street Frontage</span>
               <p>Shops &amp; Podium Level Pool</p>
@@ -416,7 +469,7 @@
           </div>
           <!-- Tall Portrait Amenities Item -->
           <div class="gallery-item reveal">
-            <img src="real_amenities.png" alt="World-Class Amenities"/>
+            <img src="real_amenities.png" alt="World-Class Amenities" loading="lazy" width="600" height="800"/>
             <div class="gallery-overlay">
               <span>World-Class Amenities</span>
               <p>Podium &amp; Terrace Lifestyle</p>
@@ -443,7 +496,7 @@
           <button class="landmark-tab" data-category="lifestyle">Lifestyle & Landmarks</button>
         </div>
 
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+        <div class="location-grid">
           <div class="reveal-left">
             <ul class="landmark-list" id="landmarkList">
               <!-- Content injected via JS -->
@@ -451,11 +504,11 @@
           </div>
           <div class="reveal-right">
             <a href="real_location_map.png" target="_blank" class="map-link">
-              <img src="real_location_map.png" alt="Vrundavan Location Map" style="border-radius:16px; border: 1px solid rgba(255,255,255,0.2); width:100%; height: 450px; object-fit: contain; background: #fff; padding: 10px;"/>
+              <img src="real_location_map.png" alt="Vrundavan Location Map" loading="lazy" width="600" height="450" style="border-radius:16px; border: 1px solid rgba(255,255,255,0.2); width:100%; height: 450px; object-fit: contain; background: #fff; padding: 10px;"/>
             </a>
             
             <!-- Live Lifestyle Widget -->
-            <div class="live-status-card reveal" style="margin-top: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; display: flex; gap: 30px; justify-content: center;">
+            <div class="live-status-card reveal" style="margin-top: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
               <div class="live-status-item" style="text-align: center;">
                 <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 5px;">Live Weather</p>
                 <span id="liveWeather" style="font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px;"><i class="fas fa-sun"></i> Loading...</span>
@@ -587,7 +640,7 @@
             </div>
             <div class="contact-card" id="contact-phone">
               <span class="contact-icon">📞</span>
-              <div><strong>Official Sales &amp; Booking</strong><p><a href="https://wa.me/919920739555" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p></div>
+              <div><strong>Official Sales &amp; Booking</strong><p><a href="https://wa.me/919920739555?text=Hello!%20I%20am%20visiting%20your%20website%20and%20would%20like%20to%20enquire%20about%20Vrundavan%20Luxury%20Residences." target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p></div>
             </div>
             <div class="contact-card">
               <span class="contact-icon">🕐</span>
@@ -616,13 +669,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="email@example.com" required/>
+              <label for="email">Email Address (Optional)</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com"/>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="interest">I'm Interested In</label>
-                <select id="interest" name="interest">
+                <select id="interest" name="interest" required>
                   <option value="">Select type</option>
                   <option value="1bhk">1 BHK – Studio Suite (₹42L+)</option>
                   <option value="2bhk">2 BHK – Comfort Home (₹73L+)</option>
@@ -655,7 +708,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="logo.jpeg" alt="Vrundavan" class="footer-logo-img"/>
+          <img src="logo.jpeg" alt="Vrundavan" class="footer-logo-img" loading="lazy" width="200" height="56"/>
           <p>Vrundavan Luxury Residences — 1 BHK &amp; Premium 2 BHK homes in Pethali, Taloja One, Navi Mumbai 410208. A community built on quality, care, and the finest lifestyle.</p>
           <div class="footer-social">
             <a href="https://www.facebook.com/profile.php?id=61573233103976&sfnsn=wa" class="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
@@ -679,14 +732,14 @@
           <ul>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#contact">Schedule Visit</a></li>
-            <li><a href="login.html">Download Brochure</a></li>
+            <li><a href="download-brochure.html">Download Brochure</a></li>
             <li><a href="#floorplans">Pricing</a></li>
           </ul>
         </div>
         <div class="footer-contact-col">
           <h4>Contact</h4>
           <p>📍 <a href="https://www.google.com/maps/search/?api=1&query=Vrundavan+by+AR+Construction+Taloja+Navi+Mumbai" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">Plot No. 1, Sector-6, Pethali, Taloja One, Navi Mumbai 410208</a></p>
-          <p>📞 <a href="https://wa.me/919920739555" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p>
+          <p>📞 <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20visiting%20your%20website%20and%20would%20like%20to%20enquire%20about%20Vrundavan%20Luxury%20Residences." target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">+91 99207 39555</a></p>
           <p style="margin-top:10px;font-size:.78rem;color:rgba(255,255,255,.3);">RERA: P52000023802</p>
         </div>
       </div>
@@ -699,6 +752,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- FLOATING WHATSAPP WIDGET -->
+  <div class="wa-float" id="waFloat">
+    <div class="wa-popup">
+      <div class="wa-popup-header">Chat with Us</div>
+      <div class="wa-popup-phone">📞 +91 99207 39555</div>
+      <div class="wa-popup-text">Have any questions? Talk to our sales executive instantly on WhatsApp.</div>
+      <a href="https://wa.me/919920739555?text=Hello!%20I%20am%20interested%20in%20Vrundavan%20Luxury%20Residences%20and%20came%20from%20Vrundavan%20website." class="wa-popup-cta" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Chat Now</a>
+    </div>
+    <div class="wa-btn" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+  </div>
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
@@ -716,11 +782,60 @@
   <script type="module" src="firebase-config.js"></script>
   <script type="module" src="script.js"></script>
   <script>
-    // Video fallback: if video fails, show image
-    document.querySelector('.hero-video').addEventListener('error', function(){
-      this.style.display='none';
-      document.getElementById('heroFallback').style.display='block';
-    });
+    /* ===== HERO VIDEO: load after hero image shown ===== */
+    (function() {
+      var video = document.getElementById('heroVideo');
+      var fallback = document.getElementById('heroFallback');
+      if (!video) return;
+
+      // Show image first (fast LCP), then load & fade in video
+      video.addEventListener('canplay', function() {
+        video.style.transition = 'opacity 0.8s ease';
+        video.style.opacity = '1';
+      });
+      video.addEventListener('error', function() {
+        video.style.display = 'none';
+      });
+
+      // Start loading video after page is interactive
+      if (document.readyState === 'complete') {
+        video.load();
+        video.play().catch(function(){});
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            video.load();
+            video.play().catch(function(){});
+          }, 500);
+        });
+      }
+    })();
+
+    /* ===== LAZY LOAD AMENITY VIDEOS ===== */
+    (function() {
+      var lazyVideos = document.querySelectorAll('video.lazy-video');
+      if (!lazyVideos.length) return;
+
+      var videoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var video = entry.target;
+            var src = video.dataset.src;
+            if (src && !video.src) {
+              var source = document.createElement('source');
+              source.src = src;
+              source.type = 'video/mp4';
+              video.appendChild(source);
+              video.load();
+              video.play().catch(function(){});
+            }
+            videoObserver.unobserve(video);
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+
+      lazyVideos.forEach(function(v) { videoObserver.observe(v); });
+    })();
   </script>
 </body>
 </html>
