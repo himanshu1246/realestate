@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "generate-config": "node scripts/generate-firebase-config.js",
-    "build": "npm run generate-config && node scripts/build.js",
+    "build": "node scripts/build.js",
     "dev": "live-server --port=8080 --entry-file=index.html --ignorePattern=\"(node_modules|.git|dist|\\.mp4|\\.pdf)\"",
     "deploy": "node scripts/deploy.js"
   },

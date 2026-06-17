@@ -1,6 +1,3 @@
-import { db } from "./firebase-config.js";
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
 /* ===== PRELOADER ===== */
 window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 1800);
@@ -262,7 +259,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     interest: document.getElementById('interest').value,
     visitDate: document.getElementById('visitDate')?.value || 'Not scheduled',
     message: document.getElementById('message').value,
-    timestamp: serverTimestamp()
+    timestamp: new Date().toISOString()
   };
 
   if (!formData.name || !formData.phone || !formData.interest) {
@@ -316,8 +313,7 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
   btn.textContent = 'Processing…'; btn.disabled = true;
 
   try {
-    // 1. Save to Firestore (Admin Panel)
-    await addDoc(collection(db, "contacts"), formData);
+    // 1. Save to database (removed)
     
     // 2. WhatsApp Lead Sync
     const waMsg = `*New Website Lead - Vrundavan*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Interest:* ${formData.interest || 'Not specified'}%0A*Site Visit Date:* ${formData.visitDate}%0A*Email:* ${formData.email || 'Not provided'}%0A*Message:* ${formData.message || 'No message'}%0A%0A_Sent from Website Lead Sync_`;
